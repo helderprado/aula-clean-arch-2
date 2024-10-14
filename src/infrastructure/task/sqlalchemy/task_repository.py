@@ -81,3 +81,15 @@ class TaskRepository(TaskRepositoryInterface):
             raise Exception("error to update task in database.")
 
         return None
+
+    def delete_task(self, task_id: UUID) -> None:
+
+        try:
+            self.session.query(TaskModel).filter(TaskModel.id == task_id).delete(
+                synchronize_session=False
+            )
+            self.session.commit()
+        except:
+            raise Exception(f"error to delete task {task_id}")
+
+        return None

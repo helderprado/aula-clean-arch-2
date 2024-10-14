@@ -21,3 +21,7 @@ class TaskRepositoryInterface(ABC):
     @abstractmethod
     def update_task(self, task: Task) -> None:
         raise NotImplementedError
+
+    @abstractmethod
+    def delete_task(self, task_id: UUID) -> None:
+        raise NotImplementedError
